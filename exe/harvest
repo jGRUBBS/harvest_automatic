@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'harvest_automatic'
+
+HarvestAutomatic.send(*ARGV)
