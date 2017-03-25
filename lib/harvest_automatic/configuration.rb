@@ -4,20 +4,24 @@ module HarvestAutomatic
   class Configuration
     include Utility
 
+    def user_info
+      @user_info ||= JSON.parse(file).symbolize_keys
+    end
+
+    def project_path
+      user_info[:project_path]
+    end
+
     def subdomain
-      info[:subdomain]
+      user_info[:subdomain]
     end
 
     def username
-      info[:username]
+      user_info[:username]
     end
 
     def password
-      info[:password]
-    end
-
-    def user_info
-      @user_info ||= JSON.parse(file).symbolize_keys
+      user_info[:password]
     end
 
     def setup
@@ -35,21 +39,23 @@ module HarvestAutomatic
     private
 
     def run_setup
-      subdomain = ask "harvest subdomain: "
-      email     = ask "harvest email: "
-      password  = ask "harvest password: "
-      write_config_file(subdomain, email, password)
+      project_path = ask "What is the parent directory of all your projects? "
+      subdomain    = ask "What is your harvestapp.com subdomain? "
+      email        = ask "What is your harvestapp.com email? "
+      password     = ask "Enter Your Password: "
+      write_config_file(project_path, subdomain, email, password)
     end
 
-    def write_config_file(subdomain, email, password)
-      File.open(path, 'w') { |f| f.write(convert_template(subdomain, email, password)) }
+    def write_config_file(project_path, subdomain, email, password)
+      File.open(path, 'w') { |f| f.write(convert_template(project_path, subdomain, email, password)) }
     end
 
-    def convert_template(subdomain, email, password)
+    def convert_template(project_path, subdomain, email, password)
       template = File.read(template_file)
-      template.sub!("SUBDOMAIN", subdomain)
-      template.sub!("USERNAME",  email)
-      template.sub!("PASSWORD",  password)
+      template.sub!("PROJECT_PATH", project_path)
+      template.sub!("SUBDOMAIN",    subdomain)
+      template.sub!("USERNAME",     email)
+      template.sub!("PASSWORD",     password)
       template
     end
 
