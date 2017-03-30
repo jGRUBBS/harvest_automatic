@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     harvest_automatic (0.1.0)
+      activesupport
       harvested (~> 3.1.1)
       highline (~> 1.7.8)
       json (~> 1.8.3)
@@ -9,18 +10,27 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (5.0.2)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    awesome_print (1.6.1)
+    concurrent-ruby (1.0.5)
     diff-lcs (1.2.5)
     harvested (3.1.1)
       hashie
       httparty
       json
-    hashie (3.4.3)
+    hashie (3.5.5)
     highline (1.7.8)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
-    json (1.8.3)
-    multi_xml (0.5.5)
+    i18n (0.8.1)
+    json (1.8.6)
+    minitest (5.10.1)
+    multi_xml (0.6.0)
     rake (10.4.2)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
@@ -35,15 +45,19 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    thread_safe (0.3.6)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bundler (~> 1.10)
   harvest_automatic!
   rake (~> 10.0)
   rspec
 
 BUNDLED WITH
-   1.10.6
+   1.14.6

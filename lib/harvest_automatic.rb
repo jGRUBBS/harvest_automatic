@@ -18,7 +18,7 @@ module HarvestAutomatic
   end
 
   def self.client
-    @client ||= Client.new
+    @client ||= Client.client
   end
 
   def self.setup

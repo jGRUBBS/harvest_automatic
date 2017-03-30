@@ -21,8 +21,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency "json", "~> 1.8.3"
   spec.add_dependency "harvested", "~> 3.1.1"
   spec.add_dependency "highline", "~> 1.7.8"
+  spec.add_dependency "activesupport"
 
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
+  spec.add_development_dependency "awesome_print"
 end

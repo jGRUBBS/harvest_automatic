@@ -9,15 +9,15 @@ require 'timers'
 # .harvest
 
 {
-  directory:  "/Users/justin/Sites/AA",
-  project_id: 8299564,
-  task_id:    1546164
+  "directory":  "/Users/developer/Sites/project",
+  "project_id": 1234567,
+  "task_id":    7654321
 }
 
-harvest.time.create(hours: 3, project_id: 8299564, task_id: 1546164)
+harvest.time.create(hours: 3, project_id: 1234567, task_id: 7654321)
 
 
-project_directory = "/Users/justin/Sites/"
+project_directory = "/Users/developer/Sites/"
 timers = Timers::Group.new
 five_minutes = 300
 
@@ -31,8 +31,6 @@ listener = Listen.to(project_directory) do |modified, added, removed|
   instance_variable_set(timer_var_label, timers.after(five_minutes) { # submit_time_entry })
 end
 listener.start
-
-
 
 module HarvestAutomatic
 
